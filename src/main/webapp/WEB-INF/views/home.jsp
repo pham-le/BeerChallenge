@@ -21,7 +21,8 @@
 		<p>..</p>
 			
 	<h2>Start the challenge!</h2>
-		<p> Please enter a unique team name and the amount of players:</p>
+		<p> Please enter a unique team name (character count must be 3 or greater) and the amount of players (1 or more):</p>
+		<font color=red>${errorMessage}</font></br>
 		<form action="/home" method="POST">
 			<label name="teamName">Team Name: </label><input name="teamName" type="text" /> </br>
         	<label name="numPeople">Team Count: </label><input name="numPeople" type="number" /> </br>
