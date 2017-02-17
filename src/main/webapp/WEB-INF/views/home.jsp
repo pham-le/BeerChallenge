@@ -25,7 +25,7 @@
 		<form action="/home" method="POST">
 			<label name="teamName">Team Name: </label><input name="teamName" type="text" /> </br>
         	<label name="numPeople">Team Count: </label><input name="numPeople" type="number" /> </br>
-        	<input type="submit" />
+        	<input type="submit" /> <font color=red>${errorMessage}</font>
    		</form>
 </body>
 
