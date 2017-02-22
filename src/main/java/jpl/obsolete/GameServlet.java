@@ -1,4 +1,4 @@
-package jpl.beerchallenge;
+/*package jpl.obsolete;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -48,4 +48,4 @@ public class GameServlet extends HttpServlet {
 
 	}
 
-}
+}*/

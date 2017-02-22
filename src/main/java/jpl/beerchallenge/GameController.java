@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class GameController {
+	
+	private GameService service = new GameService();
 
 	/**
 	 * GET Request
@@ -31,6 +33,22 @@ public class GameController {
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String handleHome(ModelMap model, @RequestParam String teamName, @RequestParam String numPeople) {
+		
+		boolean isValidName = service.validateTeamName(teamName);
+		boolean isValidCount = service.validateNumPeople(numPeople);
+
+		if (!isValidName || !isValidCount) {
+			String errorMessage = "Error: ";
+			if (!isValidName)
+				errorMessage += "Team name does not contain 3 or more characters. ";
+
+			if (!isValidCount)
+				errorMessage += "Invalid player count. ";
+			
+			model.put("errorMessage", errorMessage);
+			return "home";
+		}
+		
 		model.put("teamName", teamName);
 		model.put("numPeople", numPeople);
 		return "configure";
