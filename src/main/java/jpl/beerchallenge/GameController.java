@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *             dispatcher scans such annotated classes for mapped methods and
  *             detects @RequestMapping annotations.
  * 
- *             This class handles all the HTTP Requests.
+ *             This class handles all the HTTP Requests and invokes business
+ *             logic.
  * 
  * @author Jannette Pham-Le
  *
