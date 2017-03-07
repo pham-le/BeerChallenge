@@ -8,6 +8,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @Controller annotation is an annotation used in Spring MVC framework (the
+ *             component of Spring Framework used to implement Web Application).
+ *             The @Controller annotation indicates that a particular class
+ *             serves the role of a controller. The @Controller annotation acts
+ *             as a stereotype for the annotated class, indicating its role. The
+ *             dispatcher scans such annotated classes for mapped methods and
+ *             detects @RequestMapping annotations.
+ * 
+ *             This class handles all the HTTP Requests.
+ * 
+ * @author Jannette Pham-Le
+ *
+ */
 @Controller
 public class GameController {
 
@@ -20,7 +34,8 @@ public class GameController {
 	 * @return home page
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	// @ResponseBody (this annotation will print the return value on the page mapped)
+	// @ResponseBody (this annotation will print the return value on the page
+	// mapped)
 	public String showHomePage() {
 		return "home";
 	}
@@ -67,7 +82,7 @@ public class GameController {
 			}
 		}
 
-		return "start"; // create start page w/ timer
+		return "start";
 	}
 
 }
