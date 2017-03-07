@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class GameController {
-	
-	@Autowired //Dependency Injection
+
+	@Autowired // Dependency Injection
 	private GameService service;
 
 	/**
@@ -20,8 +20,7 @@ public class GameController {
 	 * @return home page
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	// @ResponseBody (this annotation will print the return value on the page
-	// mapped)
+	// @ResponseBody (this annotation will print the return value on the page mapped)
 	public String showHomePage() {
 		return "home";
 	}
@@ -35,7 +34,7 @@ public class GameController {
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String handleHome(ModelMap model, @RequestParam String teamName, @RequestParam String numPeople) {
-		
+
 		boolean isValidName = service.validateTeamName(teamName);
 		boolean isValidCount = service.validateNumPeople(numPeople);
 
@@ -46,13 +45,29 @@ public class GameController {
 
 			if (!isValidCount)
 				errorMessage += "Invalid player count. ";
-			
+
 			model.put("errorMessage", errorMessage);
 			return "home";
 		}
-		
+
 		model.put("teamName", teamName);
 		model.put("numPeople", numPeople);
 		return "configure";
 	}
+
+	@RequestMapping(value = "/configure", method = RequestMethod.POST)
+	public String handleConfigure(ModelMap model, @RequestParam(value = "players[]") String[] players) {
+
+		String pnameError = "";
+		for (int i = 0; i < players.length; i++) {
+			if (!service.validatePlayerName(players[i])) {
+				pnameError = "Error: Player names must contain 2 or more characters.";
+				model.put("pnameError", pnameError);
+				return "configure";
+			}
+		}
+
+		return "start"; // create start page w/ timer
+	}
+
 }

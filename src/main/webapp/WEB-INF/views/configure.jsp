@@ -15,16 +15,14 @@
 <p>Please enter player names: </p>
 		
 		<!-- REMINDER: Update name of forms on all pages.. -->
-		<form name='X' action='/configure' method='POST'> 
+		<form name="" action="/configure" method="POST"> 
 				
-		<%
-		   for (int i = 1; i <= 3; i++) {
-		%>
-			<label name="players[]">Player <%=i%>: </label>
-			<input name="players[]" type="text" /> <br />
+		<% for (int i = 1; i <= 3; i++) { %>
+				<label name="players[]">Player <%=i%>: </label>
+				<input name="players[]" type="text" /> <br />
 		
 		<% } %>
-		<input type="submit"> </form>
+		<input type="submit"> </form> <font color=red>${pnameError}</font>
 
 </body>
 
