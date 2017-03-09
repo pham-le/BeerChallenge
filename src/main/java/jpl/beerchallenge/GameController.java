@@ -29,10 +29,6 @@ public class GameController {
 	@Autowired // Dependency Injection
 	private GameService service;
 
-	
-	
-	private GameManager gameManager;
-
 	/**
 	 * GET Request
 	 * 
@@ -69,8 +65,6 @@ public class GameController {
 			model.put("errorMessage", errorMessage);
 			return "home";
 		}
-		
-		gameManager.addGame(new Game(teamName, Integer.parseInt(numPeople)));
 
 		model.put("teamName", teamName);
 		model.put("numPeople", numPeople);
@@ -78,24 +72,18 @@ public class GameController {
 	}
 
 	@RequestMapping(value = "/configure", method = RequestMethod.POST)
-	public String handleConfigure(ModelMap model, @RequestParam(value = "players[]") String[] p) {
+	public String handleConfigure(ModelMap model, @RequestParam(value = "players[]") String[] players) {
 
 		String pnameError = "";
-		for (int i = 0; i < p.length; i++) {
-			if (!service.validatePlayerName(p[i])) {
+		for (int i = 0; i < players.length; i++) {
+			if (!service.validatePlayerName(players[i])) {
 				pnameError = "Error: Player names must contain 2 or more characters.";
 				model.put("pnameError", pnameError);
 				return "configure";
 			}
 		}
-		
-		//write code to insert players into PlayerList
 
 		return "start";
 	}
-	
-	@RequestMapping(value = "/scoreboard", method = RequestMethod.GET)
-	public String showScoreBoard() {
-		return "scoreboard";
-	}
+
 }
