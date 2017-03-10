@@ -6,16 +6,13 @@ public class Game {
 	private int numPeople;
 	private Player[] players;
 
-	public void setTeamName(String teamName) {
+	public Game(String teamName, int numPeople) {
 		this.teamName = teamName;
+		this.numPeople = numPeople;
 	}
 
 	public String getTeamName() {
 		return teamName;
-	}
-
-	public void setNumPeople(int numPeople) {
-		this.numPeople = numPeople;
 	}
 
 	public int getNumPeople() {
@@ -23,11 +20,11 @@ public class Game {
 	}
 	
 	public void setPlayers(String[] p){
-		players = new Player[getNumPeople()];
+		players = new Player[numPeople];
 		
 		//need to update
-		for(int i = 0; i<getNumPeople(); i++) {
-			
+		for(int i = 0; i<numPeople; i++) {
+			players[i] = new Player(p[i]);
 		}
 		
 	}

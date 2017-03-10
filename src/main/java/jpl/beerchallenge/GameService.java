@@ -1,5 +1,8 @@
 package jpl.beerchallenge;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +14,20 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class GameService {
+	
+	private List<Game> games;
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void addGame(Game g) {
+		games.add(g);
+	}
+
+	public void setGameList(List<Game> games) {
+		this.games = games;
+	}
 
 	public boolean validateTeamName(String tname) {
 		return tname.length() >= 3;

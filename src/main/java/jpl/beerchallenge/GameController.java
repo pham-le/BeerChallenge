@@ -1,12 +1,13 @@
 package jpl.beerchallenge;
 
+import java.util.LinkedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Controller annotation is an annotation used in Spring MVC framework (the
@@ -28,7 +29,9 @@ public class GameController {
 
 	@Autowired // Dependency Injection
 	private GameService service;
-
+	
+	private Game game;
+	
 	/**
 	 * GET Request
 	 * 
@@ -49,7 +52,7 @@ public class GameController {
 	 * @return configure page
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
-	public String handleHome(ModelMap model, @RequestParam String teamName, @RequestParam String numPeople) {
+	public ModelAndView handleHome(ModelMap model, @RequestParam String teamName, @RequestParam String numPeople) {
 
 		boolean isValidName = service.validateTeamName(teamName);
 		boolean isValidCount = service.validateNumPeople(numPeople);
@@ -63,27 +66,43 @@ public class GameController {
 				errorMessage += "Invalid player count. ";
 
 			model.put("errorMessage", errorMessage);
-			return "home";
+			return new ModelAndView("home", "model", model);
 		}
+		
+		service.setGameList(new LinkedList<>());
+		game = new Game(teamName, Integer.parseInt(numPeople));
 
-		model.put("teamName", teamName);
-		model.put("numPeople", numPeople);
-		return "configure";
+		model.addAttribute("teamName", teamName);
+		model.addAttribute("numPeople", numPeople);
+
+        return new ModelAndView("configure", "model", model);
 	}
 
 	@RequestMapping(value = "/configure", method = RequestMethod.POST)
-	public String handleConfigure(ModelMap model, @RequestParam(value = "players[]") String[] players) {
-
+	public ModelAndView handleConfigure(ModelMap model, @RequestParam(value = "players[]") String[] players) {
 		String pnameError = "";
 		for (int i = 0; i < players.length; i++) {
 			if (!service.validatePlayerName(players[i])) {
 				pnameError = "Error: Player names must contain 2 or more characters.";
-				model.put("pnameError", pnameError);
-				return "configure";
+				model.addAttribute("pnameError", pnameError);
+		        return new ModelAndView("configure", "model", model);
 			}
 		}
+		
+		//add players into game object
+		game.setPlayers(players);
+		service.addGame(game);
 
-		return "start";
+        return new ModelAndView("start", "model", model);
 	}
 
+	@RequestMapping(value = "/scoreboard", method = RequestMethod.GET)
+    public ModelAndView handleScoreBoard(ModelMap model) {
+        String now = (new java.util.Date()).toString();
+
+        model.addAttribute("now", now);
+        model.addAttribute("gameList", service.getGames());
+
+        return new ModelAndView("scoreboard", "model", model);
+    }
 }
