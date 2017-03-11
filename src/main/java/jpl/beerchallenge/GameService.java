@@ -1,5 +1,6 @@
 package jpl.beerchallenge;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GameService {
 	
-	private List<Game> games;
+	private List<Game> games = new LinkedList<>();
 
 	public List<Game> getGames() {
 		return games;

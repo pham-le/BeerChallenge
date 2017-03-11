@@ -32,4 +32,14 @@ public class Game {
 	public Player[] getPlayers(){
 		return players;
 	}
+	
+	public String toString(){
+		String members = "";
+		for (Player p : players) {
+			members = members + "\t" + p.toString() + "\n";
+		}
+		
+		System.out.println(members);
+		return "Game [teamName=" + teamName + ", numPeople=" + numPeople + ", players=\n" + members +"]";
+	}
 }

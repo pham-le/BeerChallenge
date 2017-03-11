@@ -35,5 +35,9 @@ public class Player {
 	public int getRank() {
 		return rank;
 	}
+	
+	public String toString(){
+		return "Player [rank=" + rank + ", name=" + name + ", score: " + score + "]";
+	}
 
 }
