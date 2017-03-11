@@ -17,13 +17,11 @@
 		
 		<!-- REMINDER: Update name of forms on all pages.. -->
 		<form name="" action="/configure" method="POST"> 
-				
-		<% 
-		for (int i = 1; i <= 3; i++) { %>
-				<label name="players[]">Player <%=i%>: </label>
-				<input name="players[]" type="text" /> <br />
 		
-		<% } %>
+		<c:forEach begin="1" end="${numPeople}" varStatus="loop">
+			<label name="players[]">Player ${loop.index}: </label>
+			<input name="players[]" type="text" /> <br />
+		</c:forEach>
 		<input type="submit"> </form> <font color=red><c:out value="${pnameError}"/></font>
 
 </body>
