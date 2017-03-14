@@ -7,6 +7,9 @@
 <head>
 
 <script src="/resources/stopwatch.js"></script>
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Start</title>
 
@@ -29,10 +32,15 @@
 
 	<c:forEach var="player" items="${model.players}">
 		<input type="button" class="players" id="player${count}"
-			style="color: red; background-color: white" value="${player}" onclick="disable(${count})">
+			style="color: red; background-color: white" value="${player}"
+			onclick="disable(${count})">
 		<c:set var="count" value="${count + 1}" scope="page" />
 		<br />
 	</c:forEach>
+
+	<p>
+		<a href="/scoreboard">Scoreboard</a>
+	</p>
 
 
 	<script type="text/javascript">
@@ -40,25 +48,22 @@
 			var p = document.getElementById("player" + i);
 			p.setAttribute("disabled", "disabled");
 			p.style.color = "green";
-
+		
 		}
+		
 		function enable() {
-
 			var buttons = document.getElementsByClassName('players');
 			//alert(buttons.length);
-
+			
 			for (var i = 0; i < buttons.length; i++) {
 				if (buttons[i].disabled === true) {
-					buttons[i].disabled = false;
-					buttons[i].style.color = "red";
+				buttons[i].disabled = false;
+				buttons[i].style.color = "red";
 				}
 			}
-		}
+		}		
 	</script>
 
-	<p>
-		<a href="/scoreboard">Scoreboard</a>
-	</p>
 </body>
 
 </html>
