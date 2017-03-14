@@ -49,19 +49,16 @@ td, th {
 			<tr>
 				<!-- Player button -->
 				<td><input type="button" class="players" id="player${count}"
-					style="color: red; background-color: white" value="${player}"
-					onclick="disable(${count})"></td>
+					style="color: red" value="${player}"
+					onclick="disable(${count});updateScore(${count})"></td>
 
 				<!-- Rank (of whole team)-->
-				<td>0</td>
+				<td><div id="rank${count}"></div></td>
 
 				<!-- Score (last clicked) -->
-				<td>
-					<div id="score" onclick="">Time: 0 ms</div>
-				</td>
+				<td><div id="score${count}">Drank at time: 0 ms</div></td>
 			</tr>
 			<c:set var="count" value="${count + 1}" scope="page" />
-
 		</c:forEach>
 	</table>
 
@@ -87,7 +84,12 @@ td, th {
 				buttons[i].style.color = "red";
 				}
 			}
-		}		
+		}	
+		
+		function updateScore(playerNum) {
+			//var test = document.getElementById("score" + playerNum).innerHTML;
+			document.getElementById("score" + playerNum).innerHTML = "Drank at time: " + x.time() + " ms";
+		}
 	</script>
 
 </body>
