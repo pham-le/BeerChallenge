@@ -92,7 +92,10 @@ public class GameController {
 		//add players into game object
 		game.setPlayers(players);
 		service.addGame(game);
-
+		
+		model.addAttribute("players", players);
+		//model.addAttribute("numPeople", players.length);
+		
         return new ModelAndView("start", "model", model);
 	}
 
