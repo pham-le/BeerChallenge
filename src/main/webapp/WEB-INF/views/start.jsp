@@ -30,8 +30,10 @@ td, th {
 		<h2>Timer</h2>
 		<span id="time"></span>
 	</div>
-	<input type="button" value="start" onclick="start();enable();">
-	<input type="button" value="stop" onclick="stop();">
+	<input type="button" id="start" value="start"
+		onclick="start();enable();">
+	<input type="button" id="stop" value="stop"
+		onclick="stop();disableAll(${numPeople})">
 
 	<h2>Players:</h2>
 
@@ -51,10 +53,11 @@ td, th {
 					onclick="disable(${count});updateScore(${count})" disabled></td>
 
 				<!-- Rank (of whole team)-->
-				<td><div id="rank${count}"></div></td>
+				<td><div id="rank${count}">0</div></td>
 
 				<!-- Score (last clicked) -->
-				<td><div id="score${count}" style="width: 500px; font-size:12px"></div></td>
+				<td><div id="score${count}"
+						style="width: 500px; font-size: 12px"></div></td>
 			</tr>
 			<c:set var="count" value="${count + 1}" scope="page" />
 		</c:forEach>
@@ -83,6 +86,14 @@ td, th {
 		
 		}
 		
+		function disableAll(numPeople) {
+			document.getElementById('start').disabled=true;
+			
+			for(var i = 0; i<numPeople; i++) {
+				disable(i);
+			}
+		}
+		
 		function enable() {
 			var buttons = document.getElementsByClassName('players');
 			
@@ -101,6 +112,11 @@ td, th {
 			var test = document.getElementById("score" + playerNum).innerHTML;
 			test = test + formatTime(x.time()) + ", "
 			document.getElementById("score" + playerNum).innerHTML = test;
+		}
+		
+		//TO DO
+		function updateRank(playNum){
+			//document.getElementById("rank" + playerNum).innerHTML = 1;
 		}
 	</script>
 
