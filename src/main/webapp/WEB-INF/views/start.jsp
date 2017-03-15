@@ -30,10 +30,8 @@ td, th {
 		<h2>Timer</h2>
 		<span id="time"></span>
 	</div>
-	<input type="button" value="start" onclick="start();">
+	<input type="button" value="start" onclick="start();enable();">
 	<input type="button" value="stop" onclick="stop();">
-	<input type="button" value="reset" onclick="reset()">
-	<input type="button" value="TESTTTT!!!" onclick="enable()">
 
 	<h2>Players:</h2>
 
@@ -49,8 +47,8 @@ td, th {
 			<tr>
 				<!-- Player button -->
 				<td><input type="button" class="players" id="player${count}"
-					style="color: red" value="${player}"
-					onclick="disable(${count});updateScore(${count})"></td>
+					style="color: green; background: #E8E8E8" value="${player}"
+					onclick="disable(${count});updateScore(${count})" disabled></td>
 
 				<!-- Rank (of whole team)-->
 				<td><div id="rank${count}"></div></td>
