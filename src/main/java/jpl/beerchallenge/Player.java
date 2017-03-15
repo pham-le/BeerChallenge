@@ -1,11 +1,10 @@
 package jpl.beerchallenge;
 
-import java.util.Date;
 
 public class Player {
 	
 	private String name;
-	private Date score;
+	private int[] score;
 	private int rank;
 	
 	public Player(String name){
@@ -20,11 +19,11 @@ public class Player {
 		return name;
 	}
 	
-	public void setScore(Date score) {
+	public void setScore(int[] score) {
 		this.score = score;
 	}
 	
-	public Date getScore() {
+	public int[] getScore() {
 		return score;
 	}
 	

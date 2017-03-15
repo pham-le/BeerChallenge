@@ -94,7 +94,7 @@ public class GameController {
 		service.addGame(game);
 		
 		model.addAttribute("players", players);
-		//model.addAttribute("numPeople", players.length);
+		model.addAttribute("numPeople", players.length);
 		
         return new ModelAndView("start", "model", model);
 	}
