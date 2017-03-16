@@ -25,7 +25,7 @@ td, th {
 </head>
 
 <body>
-<body onload="show();createArray(${model.numPeople})">
+<body onload="show();createArrays(${model.numPeople})">
 	<div>
 		<h2>Timer</h2>
 		<span id="time"></span>
@@ -42,6 +42,7 @@ td, th {
 		<tr>
 			<th>Player</th>
 			<th>Rank</th>
+			<th>State</th>
 			<th>Scores</th>
 		</tr>
 		<c:set var="count" value="0" scope="page" />
@@ -52,8 +53,11 @@ td, th {
 					style="color: green; background: #E8E8E8" value="${player}"
 					onclick="disable(${count});updateScore(${count})" disabled></td>
 
-				<!-- Rank (of whole team)-->
+				<!-- Rank (out of whole team)-->
 				<td><div id="rank${count}">0</div></td>
+
+				<!-- State (---, PLAYING, GAME OVER, WINNER)-->
+				<td><div id="state${count}">---</div></td>
 
 				<!-- Score (last clicked) -->
 				<td><div id="score${count}"
@@ -70,16 +74,18 @@ td, th {
 
 	<script type="text/javascript">
 		var playerScores;
+		var playerState;
 		
-		function createArray(playerCount) {
+		function createArrays(playerCount) {
+			playerState = new Array(playerCount);
 			playerScores = new Array(playerCount);
 			for (var i = 0; i < playerCount; i++) {
 				playerScores[i] = new Array(60);
 			}
 		}
 	
-		function disable(i) {
-			var p = document.getElementById("player" + i);
+		function disable(playerNum) {
+			var p = document.getElementById("player" + playerNum);
 			p.setAttribute("disabled", "disabled");
 			p.style.color = "green";
 			p.style.background = "#E8E8E8";
@@ -103,15 +109,35 @@ td, th {
 					buttons[i].style.color = "red";
 					buttons[i].style.background = "white";
 				}
+				
+				updateState(i, "PLAYING");
 			}
-		}	
+		}
+		
+		function updateState(playerNum, state){
+			var stateDiv = document.getElementById("state" + playerNum);
+			
+			switch (state) {
+				case "PLAYING":
+					stateDiv.style.color = "orange";
+					break;
+				case "GAMEOVER":
+					stateDiv.style.color = "red";
+					break;
+				case "WINNER":
+					stateDiv.style.color = "green";
+					break;
+			}
+			
+			stateDiv.innerHTML = state;
+		}
 		
 		function updateScore(playerNum) {
 			playerScores[playerNum][Math.floor(x.time()/60000)] = x.time();
 
-			var test = document.getElementById("score" + playerNum).innerHTML;
-			test = test + formatTime(x.time()) + ", "
-			document.getElementById("score" + playerNum).innerHTML = test;
+			var scoreDiv = document.getElementById("score" + playerNum).innerHTML;
+			scoreDiv = scoreDiv + formatTime(x.time()) + ", "
+			document.getElementById("score" + playerNum).innerHTML = scoreDiv;
 		}
 		
 		//TO DO
