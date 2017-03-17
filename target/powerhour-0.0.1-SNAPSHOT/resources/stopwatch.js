@@ -46,6 +46,11 @@ var clsStopwatch = function() {
 	this.time = function() {
 		return lapTime + (startAt ? now() - startAt : 0);
 	};
+	
+	//Seconds
+	this.getSeconds = function() {
+		return Math.floor(lapTime + (startAt ? now() - startAt : 0) / 1000);
+	};
 };
 
 var x = new clsStopwatch();
@@ -68,16 +73,10 @@ function formatTime(time) {
 	s = Math.floor(time / 1000);
 	ms = time % 1000;
 
-	newTime = pad(h, 2) + ':' + pad(m, 2) + ':' + pad(s, 2) + ':' + pad(ms, 3);
+	//newTime = pad(h, 2) + ':' + pad(m, 2) + ':' + pad(s, 2) + ':' + pad(ms, 3);
+	newTime = pad(h, 2) + ':' + pad(m, 2) + ':' + pad(s, 2);
 	return newTime;
 }
-
-function minuteStrike() {
-	document.write("Testing minute strike");
-
-}
-
-
 
 function show() {
 	$time = document.getElementById('time');
@@ -86,18 +85,19 @@ function show() {
 
 function update() {
 	$time.innerHTML = formatTime(x.time());
+    if (x.getSeconds() % 60 === 0) {
+    	  document.getElementById("round").innerHTML = "Round " + Math.floor(x.getSeconds/60);
+    }
 }
 
 function start() {
-	clocktimer = setInterval("update()", 1);
+	clocktimer = setInterval("update()", 1000);
 	x.start();
-	alert("You button was pressed");
 }
 
 function stop() {
 	x.stop();
 	clearInterval(clocktimer);
-	alert("You button was pressed");
 }
 
 function reset() {

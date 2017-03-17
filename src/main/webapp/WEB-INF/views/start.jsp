@@ -35,9 +35,9 @@ td, th {
 	<input type="button" id="stop" value="stop"
 		onclick="stop();disableAll(${numPeople})">
 
-	<h2>Players:</h2>
+	<h2>Players</h2>
 
-
+	<div id="round" style="color: green"></div>
 	<table>
 		<tr>
 			<th>Player</th>

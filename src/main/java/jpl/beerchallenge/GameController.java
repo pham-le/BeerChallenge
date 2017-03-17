@@ -95,6 +95,7 @@ public class GameController {
 		
 		model.addAttribute("players", players);
 		model.addAttribute("numPeople", players.length);
+		model.addAttribute("teamName", game.getTeamName());
 		
         return new ModelAndView("start", "model", model);
 	}
