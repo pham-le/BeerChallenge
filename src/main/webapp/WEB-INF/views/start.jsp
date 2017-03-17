@@ -34,8 +34,6 @@ td, th {
 		onclick="start();enableAll(${numPeople});">
 	<input type="button" id="stop" value="stop"
 		onclick="stop();disableAll(${numPeople})">
-	<input type="button" id="test" value="TESTTTT!"
-		onclick="enable(1)">
 
 	<h2>Players</h2>
 
@@ -115,7 +113,7 @@ td, th {
 			}
 		}
 		
-		function checkPlayers() {
+		function checkPlayers() {	
 			for (var i = 0; i<playerState.length; i++) {
 				//Player did not click button in time
 				if (!document.getElementById("player" + i).disabled && playerState[i] === "PLAYING") {
@@ -124,7 +122,12 @@ td, th {
 				} 
 				//Player clicked button
 				else if (document.getElementById("player" + i).disabled && playerState[i] === "PLAYING") {
-					enable(i);
+					if (x.getSeconds()/60 + 1 === 60) {
+						updateState(i, "WINNER");
+						disableAll();
+					} else {
+						enable(i);
+					}
 				}
 			}
 			

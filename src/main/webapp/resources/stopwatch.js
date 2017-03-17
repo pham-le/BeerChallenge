@@ -86,8 +86,14 @@ function show() {
 function update() {
 	$time.innerHTML = formatTime(x.time());
     if (x.getSeconds() % 60 === 0 && x.getSeconds() != 0) {
-    	  document.getElementById("round").innerHTML = "ROUND " + x.getSeconds()/60 + 1;
-    	  checkPlayers();
+    	var round = document.getElementById("round");
+    	round.innerHTML = "ROUND " + (x.getSeconds()/60 + 1);
+    	checkPlayers();
+    	  
+    	if(x.getSeconds()/60 + 1 === 60) {
+    		round.innerHTML += ": Congratulations! You finished Power Hour!";
+    		stop();
+    	}
     }
 }
 
