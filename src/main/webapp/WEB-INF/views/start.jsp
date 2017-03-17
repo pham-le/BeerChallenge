@@ -127,6 +127,19 @@ td, th {
 					enable(i);
 				}
 			}
+			
+			//check if all players are gameover
+			var count = 0;
+			for (var i = 0; i<playerState.length; i++) {
+				if (playerState[i] === "GAMEOVER") {
+					count++;
+				}
+			}
+			if (count==playerState.length) {
+				x.stop();
+		    	document.getElementById("round").innerHTML += ": GAME OVER!";
+			}
+
 		}
 		
 		function updateState(playerNum, state){

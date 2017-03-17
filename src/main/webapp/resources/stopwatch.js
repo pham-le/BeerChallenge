@@ -86,7 +86,7 @@ function show() {
 function update() {
 	$time.innerHTML = formatTime(x.time());
     if (x.getSeconds() % 60 === 0 && x.getSeconds() != 0) {
-    	  document.getElementById("round").innerHTML = "ROUND " + x.getSeconds()/60;
+    	  document.getElementById("round").innerHTML = "ROUND " + x.getSeconds()/60 + 1;
     	  checkPlayers();
     }
 }
@@ -94,6 +94,7 @@ function update() {
 function start() {
 	clocktimer = setInterval("update()", 1000);
 	x.start();
+	document.getElementById("round").innerHTML = "ROUND 1";
 }
 
 function stop() {
