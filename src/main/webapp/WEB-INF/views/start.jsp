@@ -31,9 +31,11 @@ td, th {
 		<span id="time"></span>
 	</div>
 	<input type="button" id="start" value="start"
-		onclick="start();enable();">
+		onclick="start();enableAll(${numPeople});">
 	<input type="button" id="stop" value="stop"
 		onclick="stop();disableAll(${numPeople})">
+	<input type="button" id="test" value="TESTTTT!"
+		onclick="enable(1)">
 
 	<h2>Players</h2>
 
@@ -89,7 +91,6 @@ td, th {
 			p.setAttribute("disabled", "disabled");
 			p.style.color = "green";
 			p.style.background = "#E8E8E8";
-		
 		}
 		
 		function disableAll(numPeople) {
@@ -100,23 +101,38 @@ td, th {
 			}
 		}
 		
-		function enable() {
-			var buttons = document.getElementsByClassName('players');
-			
-			for (var i = 0; i < buttons.length; i++) {
-				if (buttons[i].disabled === true) {
-					buttons[i].disabled = false;
-					buttons[i].style.color = "red";
-					buttons[i].style.background = "white";
-				}
-				
+		function enable(playerNum) {
+			var p = document.getElementById("player" + playerNum);
+			p.disabled = false;
+			p.style.color = "red";
+			p.style.background = "white";
+		}
+		
+		function enableAll(numPeople) {
+			for (var i = 0; i < numPeople; i++) {
+				enable(i);
 				updateState(i, "PLAYING");
 			}
 		}
 		
+		function checkPlayers() {
+			for (var i = 0; i<playerState.length; i++) {
+				//Player did not click button in time
+				if (!document.getElementById("player" + i).disabled && playerState[i] === "PLAYING") {
+					disable(i);
+					updateState(i, "GAMEOVER");
+				} 
+				//Player clicked button
+				else if (document.getElementById("player" + i).disabled && playerState[i] === "PLAYING") {
+					enable(i);
+				}
+			}
+		}
+		
 		function updateState(playerNum, state){
+			playerState[playerNum] = state;
 			var stateDiv = document.getElementById("state" + playerNum);
-			
+
 			switch (state) {
 				case "PLAYING":
 					stateDiv.style.color = "orange";
@@ -144,6 +160,7 @@ td, th {
 		function updateRank(playNum){
 			//document.getElementById("rank" + playerNum).innerHTML = 1;
 		}
+		
 	</script>
 
 </body>
