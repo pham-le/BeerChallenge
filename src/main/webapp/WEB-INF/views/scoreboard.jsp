@@ -20,10 +20,13 @@
   	<h1>Scoreboard</h1>
   
     <p>Current Time: <c:out value="${now}"/></p>
+    <a href="/home">Home</a>
     
-    <p>Teams:</p>
+    
+    <h2>Teams:</h2>
     <c:forEach var="game" items="${gameList}" >
-		<p>${fn:replace(game, newLine,"<br />")}</p>
+    	<c:set var="str" value="${fn:replace(game, tab, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')}"/>
+		<p>${fn:replace(str, newLine, "<br/>")}</p>
     </c:forEach>
     
   </body>

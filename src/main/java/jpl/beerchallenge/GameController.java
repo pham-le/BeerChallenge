@@ -30,7 +30,7 @@ public class GameController {
 	@Autowired // Dependency Injection
 	private GameService service;
 	
-	private Game game;
+	private Game game = new Game();
 	
 	/**
 	 * GET Request
@@ -69,7 +69,6 @@ public class GameController {
 			return new ModelAndView("home", "model", model);
 		}
 		
-		service.setGameList(new LinkedList<>());
 		game = new Game(teamName, Integer.parseInt(numPeople));
 
 		model.addAttribute("teamName", teamName);

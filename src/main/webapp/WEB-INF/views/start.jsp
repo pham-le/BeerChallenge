@@ -41,7 +41,6 @@ td, th {
 	<table>
 		<tr>
 			<th>Player</th>
-			<th>Rank</th>
 			<th>State</th>
 			<th>Scores</th>
 		</tr>
@@ -52,9 +51,6 @@ td, th {
 				<td><input type="button" class="players" id="player${count}"
 					style="color: green; background: #E8E8E8" value="${player}"
 					onclick="disable(${count});updateScore(${count})" disabled></td>
-
-				<!-- Rank (out of whole team)-->
-				<td><div id="rank${count}">0</div></td>
 
 				<!-- State (---, PLAYING, GAME OVER, WINNER)-->
 				<td><div id="state${count}">---</div></td>
@@ -170,11 +166,6 @@ td, th {
 			var scoreDiv = document.getElementById("score" + playerNum).innerHTML;
 			scoreDiv = scoreDiv + formatTime(x.time()) + ", "
 			document.getElementById("score" + playerNum).innerHTML = scoreDiv;
-		}
-		
-		//TO DO
-		function updateRank(playNum){
-			//document.getElementById("rank" + playerNum).innerHTML = 1;
 		}
 		
 	</script>

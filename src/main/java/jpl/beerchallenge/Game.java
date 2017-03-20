@@ -6,6 +6,10 @@ public class Game {
 	private int numPeople;
 	private Player[] players;
 
+	public Game(){
+		
+	}
+	
 	public Game(String teamName, int numPeople) {
 		this.teamName = teamName;
 		this.numPeople = numPeople;
