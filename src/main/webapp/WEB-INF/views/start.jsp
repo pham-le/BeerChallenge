@@ -33,35 +33,43 @@ td, th {
 	<input type="button" id="start" value="start"
 		onclick="start();enableAll(${numPeople});">
 	<input type="button" id="stop" value="stop"
-		onclick="stop();disableAll(${numPeople})">
+		onclick="stop();disableAll(${numPeople});">
 
 	<h2>Players</h2>
 
 	<div id="round" style="color: green"></div>
-	<table>
-		<tr>
-			<th>Player</th>
-			<th>State</th>
-			<th>Scores</th>
-		</tr>
-		<c:set var="count" value="0" scope="page" />
-		<c:forEach var="player" items="${model.players}">
+
+	<form name="" action="/start" method="POST">
+		<table>
 			<tr>
-				<!-- Player button -->
-				<td><input type="button" class="players" id="player${count}"
-					style="color: green; background: #E8E8E8" value="${player}"
-					onclick="disable(${count});updateScore(${count})" disabled></td>
-
-				<!-- State (---, PLAYING, GAME OVER, WINNER)-->
-				<td><div id="state${count}">---</div></td>
-
-				<!-- Score (last clicked) -->
-				<td><div id="score${count}"
-						style="width: 500px; font-size: 12px"></div></td>
+				<th>Player</th>
+				<th>State</th>
+				<th>Scores</th>
 			</tr>
-			<c:set var="count" value="${count + 1}" scope="page" />
-		</c:forEach>
-	</table>
+			<c:set var="count" value="0" scope="page" />
+			<c:forEach var="player" items="${model.players}">
+				<tr>
+					<!-- Player button -->
+					<td><input type="button" class="players" id="player${count}"
+						style="color: green; background: #E8E8E8" value="${player}"
+						onclick="disable(${count});updateScore(${count})" disabled></td>
+
+					<!-- State (---, PLAYING, GAME OVER, WINNER)-->
+					<td><div id="state${count}">---</div></td>
+
+					<!-- Score (last clicked) -->
+					<td><div id="score${count}"
+							style="width: 500px; font-size: 12px"></div></td>
+				</tr>
+				<c:set var="count" value="${count + 1}" scope="page" />
+			</c:forEach>
+		</table>
+
+		<input type="hidden" id="listOfScores" name="listOfScores" value="" />
+		<input type="submit" value="Submit Scores" onclick="save();">
+	</form>
+
+
 
 	<p>
 		<a href="/scoreboard">Scoreboard</a>
@@ -71,6 +79,10 @@ td, th {
 	<script type="text/javascript">
 		var playerScores;
 		var playerState;
+		
+	    function save() {
+ 	        document.getElementById("listOfScores").value = playerScores;
+	    }
 		
 		function createArrays(playerCount) {
 			playerState = new Array(playerCount);

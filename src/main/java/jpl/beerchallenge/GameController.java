@@ -1,6 +1,9 @@
 package jpl.beerchallenge;
 
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,9 +32,9 @@ public class GameController {
 
 	@Autowired // Dependency Injection
 	private GameService service;
-	
+
 	private Game game = new Game();
-	
+
 	/**
 	 * GET Request
 	 * 
@@ -68,13 +71,13 @@ public class GameController {
 			model.put("errorMessage", errorMessage);
 			return new ModelAndView("home", "model", model);
 		}
-		
+
 		game = new Game(teamName, Integer.parseInt(numPeople));
 
 		model.addAttribute("teamName", teamName);
 		model.addAttribute("numPeople", numPeople);
 
-        return new ModelAndView("configure", "model", model);
+		return new ModelAndView("configure", "model", model);
 	}
 
 	@RequestMapping(value = "/configure", method = RequestMethod.POST)
@@ -84,28 +87,48 @@ public class GameController {
 			if (!service.validatePlayerName(players[i])) {
 				pnameError = "Error: Player names must contain 2 or more characters.";
 				model.addAttribute("pnameError", pnameError);
-		        return new ModelAndView("configure", "model", model);
+				return new ModelAndView("configure", "model", model);
 			}
 		}
-		
-		//add players into game object
+
+		// add players into game object
 		game.setPlayers(players);
 		service.addGame(game);
-		
+
 		model.addAttribute("players", players);
 		model.addAttribute("numPeople", players.length);
 		model.addAttribute("teamName", game.getTeamName());
-		
-        return new ModelAndView("start", "model", model);
+
+		return new ModelAndView("start", "model", model);
+	}
+
+	@RequestMapping(value = "/start", method = RequestMethod.POST)
+	public void handleStart(@RequestParam(value = "listOfScores") String[] listOfScores) {
+		int[] intArray = new int[listOfScores.length];
+		for (int i = 0; i < listOfScores.length; i++) {
+			if (listOfScores[i].equals("")) {
+				intArray[i] = -1;
+			} else {
+				intArray[i] = Integer.parseInt(listOfScores[i]);
+			}
+		}
+
+		Player[] players = game.getPlayers();
+		for (int i = 0; i < players.length; i++) {
+			int[] score = new int[60];
+
+			System.arraycopy(intArray, i * 60, score, 0, 60);
+			players[i].setScore(score);
+		}
 	}
 
 	@RequestMapping(value = "/scoreboard", method = RequestMethod.GET)
-    public ModelAndView handleScoreBoard(ModelMap model) {
-        String now = (new java.util.Date()).toString();
+	public ModelAndView handleScoreBoard(ModelMap model) {
+		String now = (new java.util.Date()).toString();
 
-        model.addAttribute("now", now);
-        model.addAttribute("gameList", service.getGames());
+		model.addAttribute("now", now);
+		model.addAttribute("gameList", service.getGames());
 
-        return new ModelAndView("scoreboard", "model", model);
-    }
+		return new ModelAndView("scoreboard", "model", model);
+	}
 }

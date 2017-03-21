@@ -1,5 +1,6 @@
 package jpl.beerchallenge;
 
+import java.util.Arrays;
 
 public class Player {
 	
@@ -36,7 +37,7 @@ public class Player {
 	}
 	
 	public String toString(){
-		return "Player [rank=" + rank + ", name=" + name + ", score: " + score + "]";
+		return "Player [rank=" + rank + ", name=" + name + ", score: " + Arrays.toString(score) + "]";
 	}
 
 }
