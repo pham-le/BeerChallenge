@@ -1,9 +1,5 @@
 package jpl.beerchallenge;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.stream.Stream;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -103,7 +99,7 @@ public class GameController {
 	}
 
 	@RequestMapping(value = "/start", method = RequestMethod.POST)
-	public void handleStart(@RequestParam(value = "listOfScores") String[] listOfScores) {
+	public ModelAndView handleStart(ModelMap model, @RequestParam(value = "listOfScores") String[] listOfScores) {
 		int[] intArray = new int[listOfScores.length];
 		for (int i = 0; i < listOfScores.length; i++) {
 			if (listOfScores[i].equals("")) {
@@ -120,6 +116,8 @@ public class GameController {
 			System.arraycopy(intArray, i * 60, score, 0, 60);
 			players[i].setScore(score);
 		}
+		
+		return handleScoreBoard(model);
 	}
 
 	@RequestMapping(value = "/scoreboard", method = RequestMethod.GET)

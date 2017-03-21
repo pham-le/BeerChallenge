@@ -67,6 +67,7 @@ td, th {
 
 		<input type="hidden" id="listOfScores" name="listOfScores" value="" />
 		<input type="submit" value="Submit Scores" onclick="save();">
+		
 	</form>
 
 
