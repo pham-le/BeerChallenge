@@ -1,10 +1,11 @@
-package jpl.beerchallenge;
+package jpl.beerchallenge.service;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jpl.beerchallenge.domain.Game;
 
 /**
  * @Service annotation is used in your service layer and annotates classes that

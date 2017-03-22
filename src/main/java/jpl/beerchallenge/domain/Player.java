@@ -1,4 +1,4 @@
-package jpl.beerchallenge;
+package jpl.beerchallenge.domain;
 
 import java.util.Arrays;
 

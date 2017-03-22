@@ -1,4 +1,4 @@
-package jpl.beerchallenge;
+package jpl.beerchallenge.domain;
 
 public class Game {
 
