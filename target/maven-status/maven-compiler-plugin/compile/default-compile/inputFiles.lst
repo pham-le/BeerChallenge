@@ -1,5 +1,5 @@
-/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/GameService.java
-/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/GameController.java
-/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/Player.java
-/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/Game.java
+/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/service/GameService.java
+/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/domain/Player.java
+/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/web/GameController.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/obsolete/GameServlet.java
+/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/domain/Game.java

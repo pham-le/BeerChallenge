@@ -1,4 +1,4 @@
-jpl/beerchallenge/Game.class
-jpl/beerchallenge/GameService.class
-jpl/beerchallenge/GameController.class
-jpl/beerchallenge/Player.class
+jpl/beerchallenge/domain/Game.class
+jpl/beerchallenge/web/GameController.class
+jpl/beerchallenge/service/GameService.class
+jpl/beerchallenge/domain/Player.class
