@@ -5,7 +5,7 @@ import java.util.Arrays;
 import javax.persistence.*;
 
 @Entity
-@Table(name="PLAYER")
+@Table(name="Player")
 public class Player {
 
     @Id
