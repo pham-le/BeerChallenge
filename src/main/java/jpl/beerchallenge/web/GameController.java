@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jpl.beerchallenge.domain.Game;
 import jpl.beerchallenge.domain.Player;
-import jpl.beerchallenge.service.GameService;
+import jpl.beerchallenge.service.BeerService;
 
 /**
  * @Controller annotation is an annotation used in Spring MVC framework (the
@@ -34,7 +34,7 @@ import jpl.beerchallenge.service.GameService;
 public class GameController {
 
 	@Autowired // Dependency Injection
-	private GameService service;
+	private BeerService service;
 
 	private Game game = new Game();
 

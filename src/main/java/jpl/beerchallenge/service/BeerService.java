@@ -15,7 +15,7 @@ import jpl.beerchallenge.domain.Game;
  *
  */
 @Service
-public class GameService {
+public class BeerService {
 	
 	private List<Game> games = new LinkedList<>();
 
