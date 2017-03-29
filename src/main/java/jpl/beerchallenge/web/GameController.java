@@ -1,5 +1,8 @@
 package jpl.beerchallenge.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -113,12 +116,12 @@ public class GameController {
 			}
 		}
 
-		Player[] players = game.getPlayers();
-		for (int i = 0; i < players.length; i++) {
+		List<Player> players = game.getPlayers();
+		for (int i = 0; i < players.size(); i++) {
 			int[] score = new int[60];
 
 			System.arraycopy(intArray, i * 60, score, 0, 60);
-			players[i].setScore(score);
+			players.get(i).setScore(score);
 		}
 		
 		return handleScoreBoard(model);

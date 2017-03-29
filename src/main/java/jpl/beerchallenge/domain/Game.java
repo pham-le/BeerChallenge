@@ -1,49 +1,76 @@
 package jpl.beerchallenge.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="GAME")
 public class Game {
 
-	private String teamName;
-	private int numPeople;
-	private Player[] players;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-	public Game(){
-		
-	}
+	private String teamName;
 	
+	private int numPeople;
+	
+	@OneToMany
+	(mappedBy="game", targetEntity=Player.class, cascade=(CascadeType.REMOVE))
+	private List<Player> players;
+
+	public Game() {
+		players = new ArrayList<Player>();
+	}
+
 	public Game(String teamName, int numPeople) {
+		players = new ArrayList<Player>();
 		this.teamName = teamName;
 		this.numPeople = numPeople;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTeamName() {
 		return teamName;
+	}
+	
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
 
 	public int getNumPeople() {
 		return numPeople;
 	}
 	
-	public void setPlayers(String[] p){
-		players = new Player[numPeople];
-		
-		//need to update
-		for(int i = 0; i<numPeople; i++) {
-			players[i] = new Player(p[i]);
-		}
-		
+	public void setNumPeople(int numPeople) {
+		this.numPeople = numPeople;
 	}
 	
-	public Player[] getPlayers(){
+	public void setPlayers(String[] p) {
+		for (String player : p) {
+			players.add(new Player(player));
+		}
+	}
+
+	public List<Player> getPlayers() {
 		return players;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		String members = "";
 		for (Player p : players) {
 			members = members + "\t" + p.toString() + "\n";
 		}
-		
-		System.out.println(members);
-		return "Game [teamName=" + teamName + ", numPeople=" + numPeople + ", players=\n" + members +"]";
+
+		return "Game [teamName=" + teamName + ", numPeople=" + numPeople + ", players=\n" + members + "]";
 	}
 }

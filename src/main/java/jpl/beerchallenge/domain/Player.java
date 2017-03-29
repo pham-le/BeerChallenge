@@ -2,12 +2,31 @@ package jpl.beerchallenge.domain;
 
 import java.util.Arrays;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="PLAYER")
 public class Player {
-	
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+    
 	private String name;
-	private int[] score;
-	private int rank;
 	
+	private int[] score;
+		
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Game game;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Player(String name){
 		this.name = name;
 	}
@@ -28,16 +47,16 @@ public class Player {
 		return score;
 	}
 	
-	public void setRank(int rank){
-		this.rank = rank;
+	public void setGame(Game game){
+		this.game = game;
 	}
 	
-	public int getRank() {
-		return rank;
+	public Game getGame() {
+		return game;
 	}
 	
 	public String toString(){
-		return "Player [rank=" + rank + ", name=" + name + ", score: " + Arrays.toString(score) + "]";
+		return "Player [name=" + name + ", score: " + Arrays.toString(score) + "]";
 	}
 
 }
