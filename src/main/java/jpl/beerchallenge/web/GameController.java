@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jpl.beerchallenge.domain.Game;
 import jpl.beerchallenge.domain.Player;
-import jpl.beerchallenge.service.BeerService;
 import jpl.beerchallenge.service.GameService;
 import jpl.beerchallenge.service.PlayerService;
 
@@ -35,9 +34,6 @@ import jpl.beerchallenge.service.PlayerService;
  */
 @Controller
 public class GameController {
-
-	@Autowired // Dependency Injection
-	private BeerService service;
 	
 	@Autowired
 	private GameService gameService;
