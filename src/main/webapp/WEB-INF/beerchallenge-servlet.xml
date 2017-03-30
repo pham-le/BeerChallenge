@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/tx 
  		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	<!-- Component Scan (components, services, controllers) -->
+	<context:annotation-config />
 	<context:component-scan base-package="jpl.beerchallenge" />
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />

@@ -8,37 +8,18 @@ import org.springframework.stereotype.Service;
 import jpl.beerchallenge.dao.GameDAOImpl;
 import jpl.beerchallenge.domain.Game;
 
-@Service
-public class GameService {
+public interface GameService {
 	
-	@Autowired
-	private GameDAOImpl dao;
+	public void addGame(String teamName, int numPeople);
 	
-	public void addGame(String teamName, int numPeople) {
-		Game game = new Game(teamName, numPeople);
-		dao.addGame(game);
-	}
+	public void updateGame(Game game);
 	
-	public void updateGame(Game game) {
-		dao.updateGame(game);
-	}
+	public Game getGame(int id);
 	
-	public Game getGame(int id) {
-		return dao.getGame(id);
-	}
-	
-	public List<Game> getGames() {
-		return dao.getGames();
-	}
+	public List<Game> getGames();
 
-	public boolean validateTeamName(String tname) {
-		return tname.length() >= 3;
-	}
+	public boolean validateTeamName(String tname);
 
-	public boolean validateNumPeople(String numPeople) {
-		if (numPeople.equals(""))
-			return false;
-		return Integer.parseInt(numPeople) >= 1;
-	}
+	public boolean validateNumPeople(String numPeople);
 	
 }
