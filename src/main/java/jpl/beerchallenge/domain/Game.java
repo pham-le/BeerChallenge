@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String teamName;
@@ -18,7 +18,7 @@ public class Game {
 	private int numPeople;
 	
 	@OneToMany
-	(mappedBy="game", targetEntity=Player.class, cascade=(CascadeType.REMOVE))
+	(mappedBy="game", targetEntity=Player.class, cascade=(CascadeType.ALL))
 	private List<Player> players;
 
 	public Game() {
@@ -55,10 +55,8 @@ public class Game {
 		this.numPeople = numPeople;
 	}
 	
-	public void setPlayers(String[] p) {
-		for (String player : p) {
-			players.add(new Player(player));
-		}
+	public void setPlayers(List<Player> players) {
+		this.players = players;
 	}
 
 	public List<Player> getPlayers() {

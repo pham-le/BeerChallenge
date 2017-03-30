@@ -6,7 +6,9 @@ import jpl.beerchallenge.domain.Player;
 
 public interface PlayerService {
 
-	public boolean addPlayer(String playerName);
+	public void addPlayer(Player player);
+	
+	public boolean validatePlayerName(String playerName);
 
 	public void updatePlayer(Player player);
 

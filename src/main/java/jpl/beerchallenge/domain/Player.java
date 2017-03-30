@@ -9,14 +9,14 @@ import javax.persistence.*;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
     
 	private String name;
 	
 	private int[] score;
 		
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=(CascadeType.ALL))
 	private Game game;
 	
 	public int getId() {

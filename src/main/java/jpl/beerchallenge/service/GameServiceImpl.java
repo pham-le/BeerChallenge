@@ -8,27 +8,27 @@ import org.springframework.stereotype.Service;
 import jpl.beerchallenge.dao.GameDAO;
 import jpl.beerchallenge.domain.Game;
 
-@Service("gameService")
+@Service
 public class GameServiceImpl implements GameService {
 	
 	@Autowired
-	private GameDAO dao;
+	private GameDAO gameDAO;
 	
 	public void addGame(String teamName, int numPeople) {
 		Game game = new Game(teamName, numPeople);
-		dao.addGame(game);
+		gameDAO.addGame(game);
 	}
 	
 	public void updateGame(Game game) {
-		dao.updateGame(game);
+		gameDAO.updateGame(game);
 	}
 	
 	public Game getGame(int id) {
-		return dao.getGame(id);
+		return gameDAO.getGame(id);
 	}
 	
 	public List<Game> getGames() {
-		return dao.getGames();
+		return gameDAO.getGames();
 	}
 
 	public boolean validateTeamName(String tname) {

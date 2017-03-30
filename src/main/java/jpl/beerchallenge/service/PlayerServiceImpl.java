@@ -10,28 +10,27 @@ import jpl.beerchallenge.domain.Player;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
-	
+
 	@Autowired
-	private GameDAO dao;
-	
-	public boolean addPlayer(String playerName) {
-		if (playerName.length() >=2) {
-			Player p = new Player(playerName);
-			dao.addPlayer(p);
-		}
-		
-		return false;
+	private GameDAO gameDAO;
+
+	public void addPlayer(Player player) {
+		gameDAO.addPlayer(player);
+	}
+
+	public boolean validatePlayerName(String playerName) {
+		return playerName.length() >= 2;
 	}
 
 	public void updatePlayer(Player player) {
-		dao.updatePlayer(player);
+		gameDAO.updatePlayer(player);
 	}
 
 	public Player getPlayer(int id) {
-		return dao.getPlayer(id);
+		return gameDAO.getPlayer(id);
 	}
 
 	public List<Player> getPlayers() {
-		return dao.getPlayers();
+		return gameDAO.getPlayers();
 	}
 }
