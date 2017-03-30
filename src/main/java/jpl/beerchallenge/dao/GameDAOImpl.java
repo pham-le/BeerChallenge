@@ -57,7 +57,7 @@ public class GameDAOImpl implements GameDAO {
 
 	@Override
 	public void updatePlayer(Player player) {
-		getSession().merge(player);
+		getSession().update(player);
 	}
 
 	@Override

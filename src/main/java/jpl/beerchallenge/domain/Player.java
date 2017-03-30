@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import javax.persistence.*;
 
+import jpl.beerchallenge.converter.JSONConverter;
+
 @Entity
 @Table(name="Player")
 public class Player {
@@ -14,10 +16,19 @@ public class Player {
     
 	private String name;
 	
+	@Convert(converter = JSONConverter.class)
 	private int[] score;
 		
 	@ManyToOne(fetch=FetchType.EAGER, cascade=(CascadeType.ALL))
 	private Game game;
+	
+	public Player() {
+		
+	}
+
+	public Player(String name){
+		this.name = name;
+	}
 	
 	public int getId() {
 		return id;
@@ -25,10 +36,6 @@ public class Player {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Player(String name){
-		this.name = name;
 	}
 	
 	public void setName(String name){

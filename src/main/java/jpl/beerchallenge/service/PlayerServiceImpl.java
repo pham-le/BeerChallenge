@@ -23,6 +23,7 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	public void updatePlayer(Player player) {
+		
 		gameDAO.updatePlayer(player);
 	}
 

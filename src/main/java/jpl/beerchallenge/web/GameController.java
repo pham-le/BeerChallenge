@@ -135,6 +135,7 @@ public class GameController {
 
 			System.arraycopy(intArray, i * 60, score, 0, 60);
 			players.get(i).setScore(score);
+			playerService.updatePlayer(players.get(i));
 		}
 		
 		return handleScoreBoard(model);
@@ -145,7 +146,7 @@ public class GameController {
 		String now = (new java.util.Date()).toString();
 
 		model.addAttribute("now", now);
-		model.addAttribute("gameList", service.getGames());
+		model.addAttribute("gameList", gameService.getGames());
 
 		return new ModelAndView("scoreboard", "model", model);
 	}
