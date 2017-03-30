@@ -27,9 +27,9 @@ public class BeerService {
 		games.add(g);
 	}
 
-	public void setGameList(List<Game> games) {
-		this.games = games;
-	}
+//	public void setGameList(List<Game> games) {
+//		this.games = games;
+//	}
 
 	public boolean validateTeamName(String tname) {
 		return tname.length() >= 3;
