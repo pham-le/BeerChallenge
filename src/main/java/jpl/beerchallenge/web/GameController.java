@@ -16,28 +16,19 @@ import jpl.beerchallenge.domain.Player;
 import jpl.beerchallenge.service.GameService;
 import jpl.beerchallenge.service.PlayerService;
 
-
 /**
- * @Controller annotation is an annotation used in Spring MVC framework (the
- *             component of Spring Framework used to implement Web Application).
- *             The @Controller annotation indicates that a particular class
- *             serves the role of a controller. The @Controller annotation acts
- *             as a stereotype for the annotated class, indicating its role. The
- *             dispatcher scans such annotated classes for mapped methods and
- *             detects @RequestMapping annotations.
  * 
- *             This class handles all the HTTP Requests and invokes business
- *             logic.
+ * This class handles all the HTTP Requests and invokes business logic.
  * 
  * @author Jannette Pham-Le
  *
  */
 @Controller
 public class GameController {
-	
+
 	@Autowired
 	private GameService gameService;
-	
+
 	@Autowired
 	private PlayerService playerService;
 
@@ -79,7 +70,7 @@ public class GameController {
 		}
 
 		game = new Game(teamName, Integer.parseInt(numPeople));
-		//gameService.addGame(teamName, Integer.parseInt(numPeople));
+		// gameService.addGame(teamName, Integer.parseInt(numPeople));
 
 		model.addAttribute("teamName", teamName);
 		model.addAttribute("numPeople", numPeople);
@@ -89,18 +80,18 @@ public class GameController {
 
 	@RequestMapping(value = "/configure", method = RequestMethod.POST)
 	public ModelAndView handleConfigure(ModelMap model, @RequestParam(value = "players[]") String[] players) {
-		String pnameError = "";
-		for (int i = 0; i < players.length; i++) {
-			if (!playerService.validatePlayerName(players[i])) {
-				pnameError = "Error: Player names must contain 2 or more characters.";
-				model.addAttribute("pnameError", pnameError);
+		String errorMessage = "";
+		for (String playerName : players) {
+			if (!playerService.validatePlayerName(playerName)) {
+				errorMessage = "Error: Player names must contain 2 or more characters.";
+				model.addAttribute("errorMessage", errorMessage);
 				return new ModelAndView("configure", "model", model);
 			}
 		}
 
 		List<Player> playerList = new ArrayList<>();
-		for (int i = 0; i < players.length; i++) {
-			Player p = new Player(players[i]);
+		for (String playerName : players) {
+			Player p = new Player(playerName);
 			p.setGame(game);
 			playerList.add(p);
 			playerService.addPlayer(p);
@@ -133,7 +124,7 @@ public class GameController {
 			players.get(i).setScore(score);
 			playerService.updatePlayer(players.get(i));
 		}
-		
+
 		return handleScoreBoard(model);
 	}
 

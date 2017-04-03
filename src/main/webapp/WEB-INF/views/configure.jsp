@@ -13,7 +13,7 @@
 <body>
 <h1>Welcome, <c:out value="${teamName}"/>!</h1>
 
-<p>Please enter player names: </p>
+<p>Please enter player names (2 or more characters): </p>
 		
 		<!-- REMINDER: Update name of forms on all pages.. -->
 		<form name="" action="/configure" method="POST"> 
@@ -22,7 +22,7 @@
 			<label name="players[]">Player ${loop.index}: </label>
 			<input name="players[]" type="text" /> <br />
 		</c:forEach>
-		<input type="submit"> </form> <font color=red><c:out value="${pnameError}"/></font>
+		<input type="submit"> </form> <font color=red><c:out value="${errorMessage}"/></font>
 
 </body>
 
