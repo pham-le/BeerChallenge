@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [02/Apr/2017:19:58:25 -0700] "GET /home HTTP/1.1" 200 717 http-bio-8080-exec-8 51
+0:0:0:0:0:0:0:1 - - [02/Apr/2017:19:58:27 -0700] "POST /home HTTP/1.1" 200 726 http-bio-8080-exec-8 47
+0:0:0:0:0:0:0:1 - - [02/Apr/2017:19:58:32 -0700] "POST /configure HTTP/1.1" 200 5111 http-bio-8080-exec-8 674
+0:0:0:0:0:0:0:1 - - [02/Apr/2017:19:58:32 -0700] "GET /resources/stopwatch.js HTTP/1.1" 304 - http-bio-8080-exec-1 12
+0:0:0:0:0:0:0:1 - - [02/Apr/2017:19:59:09 -0700] "POST /configure HTTP/1.1" 200 5122 http-bio-8080-exec-1 144

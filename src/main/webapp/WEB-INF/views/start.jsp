@@ -33,7 +33,7 @@ td, th {
 	<input type="button" id="start" value="start"
 		onclick="start();enableAll(${numPeople});">
 	<input type="button" id="stop" value="stop"
-		onclick="stop();disableAll(${numPeople});">
+		onclick="stop();disableAll(${numPeople});gameOver();">
 
 	<h2>Players</h2>
 
@@ -149,9 +149,16 @@ td, th {
 			}
 			if (count==playerState.length) {
 				x.stop();
-		    	document.getElementById("round").innerHTML += ": GAME OVER!";
+				gameOver();
 			}
 
+		}
+		
+		function gameOver(){
+			for (var i = 0; i<playerState.length; i++) {
+				updateState(i, "GAMEOVER");
+			}
+	    	document.getElementById("round").innerHTML += ": GAME OVER!";
 		}
 		
 		function updateState(playerNum, state){
