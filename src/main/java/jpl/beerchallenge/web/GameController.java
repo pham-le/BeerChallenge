@@ -117,6 +117,15 @@ public class GameController {
 		return new ModelAndView("start", "model", model);
 	}
 
+	/**
+	 * Once the team decides to submit the final scores for each player, the
+	 * scores will be saved into the database and the scoreboard page will be
+	 * displayed.
+	 * 
+	 * @param model
+	 * @param listOfScores
+	 * @return
+	 */
 	@RequestMapping(value = "/start", method = RequestMethod.POST)
 	public ModelAndView handleStart(ModelMap model, @RequestParam(value = "listOfScores") String[] listOfScores) {
 		int[] intArray = new int[listOfScores.length];
@@ -154,6 +163,15 @@ public class GameController {
 		model.addAttribute("gameList", gameService.getGames());
 
 		return new ModelAndView("scoreboard", "model", model);
+	}
+
+	@RequestMapping(value = "/scoreboard", method = RequestMethod.POST)
+	public String displayDetails(@RequestParam(value = "name") String name, @RequestParam(value = "type") String type) {
+		if (type.equals("teamName")) {
+			return "redirect:/scoreboard/teamname=" + name;
+		} else {
+			return "redirect:/scoreboard/playername=" + name;
+		}
 	}
 
 	/**
