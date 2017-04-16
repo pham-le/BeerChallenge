@@ -37,7 +37,7 @@ public class GameController {
 	private Game game = new Game();
 
 	/**
-	 * GET Request
+	 * Displays the home page of the game.
 	 * 
 	 * @return home page
 	 */
@@ -47,10 +47,12 @@ public class GameController {
 	}
 
 	/**
-	 * POST Request: When an operator fills out the form on the home page
-	 * correctly by submitting a POST request, they will be brought to the
-	 * configure page.
+	 * When an operator fills out the form on the home page correctly by
+	 * submitting a POST request, they will be brought to the configure page.
 	 * 
+	 * @param model
+	 * @param teamName
+	 * @param numPeople
 	 * @return configure page
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
@@ -80,6 +82,14 @@ public class GameController {
 		return new ModelAndView("configure", "model", model);
 	}
 
+	/**
+	 * When the operator fills out the form with all of the names of each player
+	 * on the team correctly, they will be brought to the start page.
+	 * 
+	 * @param model
+	 * @param players
+	 * @return start page
+	 */
 	@RequestMapping(value = "/configure", method = RequestMethod.POST)
 	public ModelAndView handleConfigure(ModelMap model, @RequestParam(value = "players[]") String[] players) {
 		String errorMessage = "";
@@ -130,6 +140,12 @@ public class GameController {
 		return handleScoreBoard(model);
 	}
 
+	/**
+	 * Details of each game is displayed on the scoreboard page.
+	 * 
+	 * @param model
+	 * @return scoreboard page
+	 */
 	@RequestMapping(value = "/scoreboard", method = RequestMethod.GET)
 	public ModelAndView handleScoreBoard(ModelMap model) {
 		String now = (new java.util.Date()).toString();
@@ -139,7 +155,14 @@ public class GameController {
 
 		return new ModelAndView("scoreboard", "model", model);
 	}
-	
+
+	/**
+	 * Specific game details are displayed if the given user input matches a
+	 * team's name within the database.
+	 * 
+	 * @param teamName
+	 * @return
+	 */
 	@RequestMapping(value = "/scoreboard/teamname={teamName}", method = RequestMethod.GET)
 	@ResponseBody
 	public String findTeamName(@PathVariable String teamName) {
@@ -149,13 +172,20 @@ public class GameController {
 				responseBody = responseBody + g.toString() + "\n";
 			}
 		}
-		
+
 		if (responseBody.equals(""))
 			responseBody = "ERROR: Cannot find team(s) with name: " + teamName;
-		
+
 		return responseBody;
 	}
-	
+
+	/**
+	 * Specific player details are displayed if the given user input matches the
+	 * player's name within the database.
+	 * 
+	 * @param playerName
+	 * @return
+	 */
 	@RequestMapping(value = "/scoreboard/playername={playerName}", method = RequestMethod.GET)
 	@ResponseBody
 	public String findPlayer(@PathVariable String playerName) {
@@ -165,12 +195,10 @@ public class GameController {
 				responseBody = responseBody + p.toString() + "\n";
 			}
 		}
-		
+
 		if (responseBody.equals(""))
 			responseBody = "ERROR: Cannot find player(s) with name: " + playerName;
-		
+
 		return responseBody;
 	}
 }
-
-
