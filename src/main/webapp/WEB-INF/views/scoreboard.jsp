@@ -14,8 +14,10 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Beer Challenge - Power Hour, Scoreboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="/resources/layout.css">
+	
+	<title>Beer Challenge - Power Hour, Scoreboard</title>
 </head>
 
 <body>
@@ -38,12 +40,36 @@
 		</select> <input type="submit" />
 	</form>
 
-	<h2>Teams:</h2>
-	<c:forEach var="game" items="${gameList}">
-		<c:set var="str"
-			value="${fn:replace(game, tab, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')}" />
-		<p>${fn:replace(str, newLine, "<br/>")}</p>
-	</c:forEach>
+	<h2>Teams</h2>
 
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>TEAM NAME</th>
+			<th>NUMBER OF PLAYERS</th>
+		</tr>
+		<c:forEach var="game" items="${gameList}">
+			<tr>
+				<td>${game.id}</td>
+				<td>${game.teamName}</td>
+				<td>${game.numPeople}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+	<h2>Players</h2>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>PLAYER NAME</th>
+		</tr>
+		<c:forEach var="player" items="${playerList}">
+			<tr>
+				<td>${player.id}</td>
+				<td>${player.name}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
 </body>
 </html>

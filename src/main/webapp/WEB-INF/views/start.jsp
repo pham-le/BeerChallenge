@@ -5,23 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<script src="/resources/stopwatch.js"></script>
-<style>
-table {
-	border-collapse: collapse;
-}
-
-td, th {
-	border: 1px solid black;
-	text-align: center;
-}
-</style>
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Start</title>
-
+	<script src="/resources/stopwatch.js"></script>
+	<link rel="stylesheet" href="/resources/layout.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	<title>Start</title>
 </head>
 
 <body>

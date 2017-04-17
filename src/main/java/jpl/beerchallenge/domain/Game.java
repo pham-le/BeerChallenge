@@ -66,9 +66,9 @@ public class Game {
 	public String toString() {
 		String members = "";
 		for (Player p : players) {
-			members = members + "\t" + p.toString() + "\n";
+			members = members + p.toString() + ", ";
 		}
 
-		return "Game [teamName=" + teamName + ", numPeople=" + numPeople + ", players=\n" + members + "]";
+		return "Game [id=" + id + ", teamName=" + teamName + ", numPeople=" + numPeople + ", players=\n" + players.toString() + "]";
 	}
 }

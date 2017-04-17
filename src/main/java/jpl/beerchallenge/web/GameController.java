@@ -161,10 +161,18 @@ public class GameController {
 
 		model.addAttribute("now", now);
 		model.addAttribute("gameList", gameService.getGames());
+		model.addAttribute("playerList", playerService.getPlayers());
 
 		return new ModelAndView("scoreboard", "model", model);
 	}
 
+	/**
+	 * Redirect to another page to display details of either a game or a player.
+	 * 
+	 * @param name
+	 * @param type
+	 * @return redirect URL
+	 */
 	@RequestMapping(value = "/scoreboard", method = RequestMethod.POST)
 	public String displayDetails(@RequestParam(value = "name") String name, @RequestParam(value = "type") String type) {
 		if (type.equals("teamName")) {
@@ -181,13 +189,13 @@ public class GameController {
 	 * @param teamName
 	 * @return
 	 */
-	@RequestMapping(value = "/scoreboard/teamname={teamName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/scoreboard/teamname={teamName}", method = RequestMethod.GET, produces="text/plain")
 	@ResponseBody
 	public String findTeamName(@PathVariable String teamName) {
 		String responseBody = "";
 		for (Game g : gameService.getGames()) {
 			if (g.getTeamName().equals(teamName)) {
-				responseBody = responseBody + g.toString() + "\n";
+				responseBody = responseBody + g.toString() + "\n\n";
 			}
 		}
 
@@ -204,13 +212,13 @@ public class GameController {
 	 * @param playerName
 	 * @return
 	 */
-	@RequestMapping(value = "/scoreboard/playername={playerName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/scoreboard/playername={playerName}", method = RequestMethod.GET, produces="text/plain")
 	@ResponseBody
 	public String findPlayer(@PathVariable String playerName) {
 		String responseBody = "";
 		for (Player p : playerService.getPlayers()) {
 			if (p.getName().equals(playerName)) {
-				responseBody = responseBody + p.toString() + "\n";
+				responseBody = responseBody + p.toString() + "\n\n";
 			}
 		}
 

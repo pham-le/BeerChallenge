@@ -63,7 +63,7 @@ public class Player {
 	}
 	
 	public String toString(){
-		return "Player [name=" + name + ", score: " + Arrays.toString(score) + "]";
+		return "Player [id=" + id + ", name=" + name + ", score=" + Arrays.toString(score) + "]";
 	}
 
 }
