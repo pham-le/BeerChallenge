@@ -22,6 +22,8 @@ public class Player {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=(CascadeType.ALL))
 	private Game game;
 	
+	private String status = "UNKNOWN";
+	
 	public Player() {
 		
 	}
@@ -48,6 +50,11 @@ public class Player {
 	
 	public void setScore(int[] score) {
 		this.score = score;
+		
+		if (score[59] != -1)
+			setStatus("WINNER");
+		else
+			setStatus("LOSER");
 	}
 	
 	public int[] getScore() {
@@ -62,8 +69,16 @@ public class Player {
 		return game;
 	}
 	
+	public void setStatus(String status){
+		this.status = status;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+	
 	public String toString(){
-		return "Player [id=" + id + ", name=" + name + ", score=" + Arrays.toString(score) + "]";
+		return "Player [id=" + id + ", name=" + name + ", score=" + Arrays.toString(score) + ", status=" + status + "]";
 	}
 
 }

@@ -62,11 +62,13 @@
 		<tr>
 			<th>ID</th>
 			<th>PLAYER NAME</th>
+			<th>STATUS</th>
 		</tr>
 		<c:forEach var="player" items="${playerList}">
 			<tr>
 				<td>${player.id}</td>
 				<td>${player.name}</td>
+				<td>${player.status}</td>
 			</tr>
 		</c:forEach>
 	</table>
