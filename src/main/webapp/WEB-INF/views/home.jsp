@@ -18,6 +18,8 @@
 		of beer (or any liquid) every minute within one hour (i.e. 60 shots).
 		This game can be played with any amount of players, and each player
 		can drop out at any time. Please play at your own discretion.</p>
+		
+	<p><a href="/scoreboard">Scoreboard</a></p>
 
 	<h2>Setup</h2>
 	<p>Each player must have:</p>
