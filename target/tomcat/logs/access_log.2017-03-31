@@ -1,2 +1,0 @@
-0:0:0:0:0:0:0:1 - - [31/Mar/2017:13:37:08 -0700] "GET /resources/stopwatch.js HTTP/1.1" 304 - http-bio-8080-exec-5 633
-0:0:0:0:0:0:0:1 - - [31/Mar/2017:13:37:23 -0700] "GET /home HTTP/1.1" 200 717 http-bio-8080-exec-5 211

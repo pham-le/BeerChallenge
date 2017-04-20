@@ -2,10 +2,10 @@
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/service/PlayerService.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/service/PlayerServiceImpl.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/service/GameService.java
+/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/converter/JSONConverter.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/dao/GameDAOImpl.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/domain/Player.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/service/GameServiceImpl.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/web/GameController.java
-/Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/service/BeerService.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/obsolete/GameServlet.java
 /Users/JANNETTE/Documents/workspace/BeerChallenge/src/main/java/jpl/beerchallenge/domain/Game.java

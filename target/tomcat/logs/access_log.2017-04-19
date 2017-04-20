@@ -1,5 +1,0 @@
-0:0:0:0:0:0:0:1 - - [19/Apr/2017:14:54:07 -0700] "GET /home HTTP/1.1" 200 2133 http-bio-8080-exec-1 1883
-0:0:0:0:0:0:0:1 - - [19/Apr/2017:14:54:07 -0700] "GET /favicon.ico HTTP/1.1" 404 949 http-bio-8080-exec-2 7
-0:0:0:0:0:0:0:1 - - [19/Apr/2017:14:54:11 -0700] "GET /scoreboard HTTP/1.1" 200 1214 http-bio-8080-exec-3 660
-0:0:0:0:0:0:0:1 - - [19/Apr/2017:14:54:11 -0700] "GET /resources/layout.css HTTP/1.1" 200 96 http-bio-8080-exec-4 21
-0:0:0:0:0:0:0:1 - - [19/Apr/2017:14:55:21 -0700] "GET /home HTTP/1.1" 200 2133 http-bio-8080-exec-6 7
