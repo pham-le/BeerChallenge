@@ -29,8 +29,8 @@
 		</property>
 	</bean>
 	
- 	<bean class="java.net.URI" id="dbUrl">
-    	<constructor-arg value="${DATABASE_URL}"/>
+	<bean class="java.net.URI" id="dbUrl">
+	    <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
 	</bean>
 	
 	<!-- Postgres Configuration -->
