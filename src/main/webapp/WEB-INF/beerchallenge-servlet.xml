@@ -47,8 +47,7 @@
 	    <property name="username" value="postgres"/>
 	    <property name="password" value=""/>
 	</bean> -->
-	
-	
+		
 	<!-- MySQL Database Configuration -->
 	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">

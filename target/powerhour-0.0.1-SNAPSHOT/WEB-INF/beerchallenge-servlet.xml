@@ -29,26 +29,25 @@
 		</property>
 	</bean>
 	
-<!-- 	<bean class="java.net.URI" id="dbUrl">
+ 	<bean class="java.net.URI" id="dbUrl">
     	<constructor-arg value="${DATABASE_URL}"/>
-	</bean> -->
+	</bean>
 	
 	<!-- Postgres Configuration -->
-<!-- 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+ 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
 	    <property name="driverClassName" value="${database.driverClassName}"/>
 	    <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
 	    <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
 	    <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
-	</bean> -->
+	</bean>
 	
-	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+<!-- 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
 	    <property name="driverClassName" value="org.postgresql.Driver"/>
 	    <property name="url" value="jdbc:postgresql://localhost:5432/BeerChallenge"/>
 	    <property name="username" value="postgres"/>
 	    <property name="password" value=""/>
-	</bean>
-	
-	
+	</bean> -->
+		
 	<!-- MySQL Database Configuration -->
 	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
