@@ -17,6 +17,7 @@ public class Player {
 	private String name;
 	
 	@Convert(converter = JSONConverter.class)
+	@Column(columnDefinition = "VARCHAR(550)")
 	private int[] score;
 		
 	@ManyToOne(fetch=FetchType.EAGER, cascade=(CascadeType.ALL))
