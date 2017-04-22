@@ -6,7 +6,6 @@ INSERT INTO BeerChallenge.Player (game_id, name, score, status) VALUES (1, 'Chri
 
 INSERT INTO BeerChallenge.Player (game_id, name, score, status) VALUES (1, 'Mimi', '[50030, 120532, 210022, 277777, 390023, 508883, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]', 'LOSER');
 
-
 INSERT INTO BeerChallenge.Game (numPeople, teamName) VALUES (1, 'Orange');
 
 INSERT INTO BeerChallenge.Player (game_id, name, score, status) VALUES (2, 'Michael', '[30133, 120532, 210022, 25677, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]', 'LOSER');
