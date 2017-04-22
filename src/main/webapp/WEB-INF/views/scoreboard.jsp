@@ -28,7 +28,7 @@
 		Current Time:
 		<c:out value="${now}" />
 	</p>
-	<a href="/home">Home</a>
+	<a href="/">Home</a>
 
 	<p>Enter a specific team name of player name if you would like to
 		see specific details:

@@ -41,7 +41,7 @@ public class GameController {
 	 * 
 	 * @return home page
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showHomePage() {
 		return "home";
 	}
@@ -55,7 +55,7 @@ public class GameController {
 	 * @param numPeople
 	 * @return configure page
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView handleHome(ModelMap model, @RequestParam String teamName, @RequestParam String numPeople) {
 
 		boolean isValidName = gameService.validateTeamName(teamName);

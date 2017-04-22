@@ -49,7 +49,7 @@
 	<h2>Start the challenge!</h2>
 	<p>Please enter a team name (3 or more characters) and the amount
 		of players:</p>
-	<form action="/home" method="POST">
+	<form action="/" method="POST">
 		<label name="teamName">Team Name: </label><input name="teamName"
 			type="text" /> </br> <label name="numPeople">Team Count: </label><input
 			name="numPeople" type="number" /> </br> <input type="submit" /> <font
