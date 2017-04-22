@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="/resources/stopwatch.js"></script>
-	<link rel="stylesheet" href="/resources/layout.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	
-	<title>Start</title>
+<script src="/resources/stopwatch.js"></script>
+<link rel="stylesheet" href="/resources/layout.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Start</title>
 </head>
 
 <body>
@@ -23,10 +23,27 @@
 	<input type="button" id="stop" value="stop"
 		onclick="stop();disableAll(${numPeople});gameOver();">
 
+	<h2>Rules</h2>
+	<ol>
+		<li>Press the "Start" button under the timer to begin the clock and start playing!
+			The "Stop" button will stop the game indefinitely.</li>
+		<li>Once a player drinks their shot, the player must click the
+			button with their name on it, and that time will be recorded. Clicking
+			these buttons indicate which players have passed the round.</li>
+		<li>At each minute mark, players who have successfully indicated
+			that they have drank their shot will have their button reactivated for
+			the next round.</li>
+		<li>If a player fails to drink their shot (i.e click their button)
+			within that minute, it will be game over for that player. If no one is
+			able to finish their shots, meaning that none of the buttons have been
+			pressed, then it is game over for the whole team and the timer will
+			stop.</li>
+		<li>Once the game is over, click the "Submit Scores" button each
+			players times to the score board.</li>
+	</ol>
+
 	<h2>Players</h2>
-
 	<div id="round" style="color: green"></div>
-
 	<form name="" action="/start" method="POST">
 		<table>
 			<tr>
@@ -55,7 +72,7 @@
 
 		<input type="hidden" id="listOfScores" name="listOfScores" value="" />
 		<input type="submit" value="Submit Scores" onclick="save();">
-		
+
 	</form>
 
 
