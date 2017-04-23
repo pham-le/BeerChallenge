@@ -41,7 +41,7 @@
 		<li>Once a player drinks their shot, the player must click the
 			button with their name on it, and that time will be recorded. Clicking
 			these buttons indicate which players have passed the round.</li>
-		<li>At each minute mark, players who have successfully indicated
+		<li>At every minute mark, a sound will play and players who have successfully indicated
 			that they have drank their shot will have their button reactivated for
 			the next round.</li>
 		<li>If a player fails to drink their shot (i.e click their button)

@@ -30,7 +30,7 @@
 		<li>Once a player drinks their shot, the player must click the
 			button with their name on it, and that time will be recorded.
 			Clicking these buttons indicate which players have passed the round.</li>
-		<li>At each minute mark, players who have successfully indicated
+		<li>At every minute mark, a sound will play and players who have successfully indicated
 			that they have drank their shot will have their button reactivated
 			for the next round.</li>
 		<li>If a player fails to drink their shot (i.e click their
@@ -42,6 +42,12 @@
 			players times to the score board.</li>
 	</ol>
 
+	<h3>Legend</h3>
+	<input type="button" style="color: red; background: white" value="ENABLED " disabled>
+	= This button is enabled, meaning the player is still in the game and must pass the round before the minute is up.<br/>
+	<input type="button" style="color: green; background: #E8E8E8" value="DISABLED" disabled>
+	= This button is disabled, meaning the player has either already passed the round by clicking it, or is out of the game.
+	
 	<h2>Players</h2>
 	<div id="round" style="color: green"></div>
 	<form name="" action="/start" method="POST">

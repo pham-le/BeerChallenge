@@ -56,6 +56,7 @@ var clsStopwatch = function() {
 var x = new clsStopwatch();
 var $time;
 var clocktimer;
+var audio = new Audio("/resources/mario_coin_sound.m4a");
 
 function pad(num, size) {
 	var s = "0000" + num;
@@ -87,8 +88,9 @@ function update() {
 	$time.innerHTML = formatTime(x.time());
     if (x.getSeconds() % 60 === 0 && x.getSeconds() != 0) {
     	var round = document.getElementById("round");
-    	round.innerHTML = "ROUND " + (x.getSeconds()/60 + 1);
+    	round.innerHTML = "<b>ROUND " + (x.getSeconds()/60 + 1) + "</b>";
     	checkPlayers();
+    	audio.play();
     	  
     	if(x.getSeconds()/60 + 1 === 60) {
     		round.innerHTML += ": Congratulations! You finished Power Hour!";
@@ -98,8 +100,12 @@ function update() {
 }
 
 function start() {
+	var button = document.getElementById("start");
+	button.setAttribute("disabled", "disabled");
+	
 	clocktimer = setInterval("update()", 1000);
 	x.start();
+	audio.play();
 	document.getElementById("round").innerHTML = "ROUND 1";
 }
 
