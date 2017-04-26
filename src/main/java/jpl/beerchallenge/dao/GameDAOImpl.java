@@ -49,34 +49,4 @@ public class GameDAOImpl implements GameDAO {
 	public List<Game> getGames() {
         return getSession().createQuery("from Game").list();
 	}
-
-	@Override
-	public void addPlayer(Player player) {
-		getSession().save(player);
-	}
-
-	@Override
-	public void updatePlayer(Player player) {
-		getSession().update(player);
-	}
-
-	@Override
-	public Player getPlayer(int id) {
-		List<Player> players = getPlayers();
-		if (players.isEmpty())
-			return null;
-		
-		for (Player p : players) {
-			if (p.getId() == id) return p;
-		}
-		
-		return null;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Player> getPlayers() {
-        return getSession().createQuery("from Player").list();
-	}
-
 }

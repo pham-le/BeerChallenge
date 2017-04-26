@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jpl.beerchallenge.dao.GameDAO;
+import jpl.beerchallenge.dao.PlayerDAO;
 import jpl.beerchallenge.domain.Player;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
 	@Autowired
-	private GameDAO gameDAO;
+	private PlayerDAO playerDAO;
 
 	public void addPlayer(Player player) {
-		gameDAO.addPlayer(player);
+		playerDAO.addPlayer(player);
 	}
 
 	public boolean validatePlayerName(String playerName) {
@@ -24,14 +24,14 @@ public class PlayerServiceImpl implements PlayerService {
 
 	public void updatePlayer(Player player) {
 		
-		gameDAO.updatePlayer(player);
+		playerDAO.updatePlayer(player);
 	}
 
 	public Player getPlayer(int id) {
-		return gameDAO.getPlayer(id);
+		return playerDAO.getPlayer(id);
 	}
 
 	public List<Player> getPlayers() {
-		return gameDAO.getPlayers();
+		return playerDAO.getPlayers();
 	}
 }
